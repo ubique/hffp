@@ -1,0 +1,42 @@
+cabal-version:  2.4
+
+name:           morse
+version:        0.1.0.0
+license-file:   LICENSE
+author:         Dmitrii Banshchikov
+maintainer:     me@ubique.spb.ru
+category:       Text
+build-type:     Simple
+
+library
+  exposed-modules: Morse
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends: base >=4.7 && <5
+               , containers
+               , QuickCheck
+  hs-source-dirs: src
+  default-language: Haskell2010
+
+executable morse
+  main-is: Main.hs
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  hs-source-dirs: src
+  build-depends:
+      base >=4.7 && <5
+    , morse
+    , containers
+    , QuickCheck
+  other-modules: Morse
+  default-language: Haskell2010
+
+test-suite tests
+  type: exitcode-stdio-1.0
+  main-is: tests.hs
+  hs-source-dirs: tests
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , morse
+    , containers
+    , QuickCheck
+  default-language: Haskell2010
